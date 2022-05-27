@@ -6,10 +6,10 @@
     <script type="text/javascript">
         window.addEventListener( "load", function () {
             function sendData() {
-                const XHR = new XMLHttpRequest();
+                //const XHR = new XMLHttpRequest();
 
                 // Bind the FormData object and the form element
-                const FD = new FormData( form );
+                //const FD = new FormData( form );
 /*
                 // Define what happens on successful data submission
                 XHR.addEventListener( "load", function(event) {
@@ -21,7 +21,7 @@
                     alert( 'Oops! Something went wrong.' );
                 } );*/
 
-                fetch("http://www.googe.com",{
+                fetch("/api/HttpTrigger1",{
                     method: 'GET', // *GET, POST, PUT, DELETE, etc.
                     mode: 'cors', // no-cors, *cors, same-origin
                     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -63,8 +63,8 @@
     <h1>Static Website</h1>
     <p>Test.</p>
     <form id="myForm">
-        <label for="myName">Send me your name:</label>
-        <input id="myName" name="name" value="John">
+        <label for="myName">Call Function:</label>
+        <!--<input id="myName" name="name" value="John">-->
         <input type="submit" value="Send Me!">
     </form>
     </body>
