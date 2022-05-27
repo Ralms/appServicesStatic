@@ -1,9 +1,71 @@
 <!DOCTYPE html>
 <html>
-<body>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    </head>
+    <script type="text/javascript">
+        window.addEventListener( "load", function () {
+            function sendData() {
+                const XHR = new XMLHttpRequest();
 
-<h1>Static Website</h1>
-<p>Test.</p>
+                // Bind the FormData object and the form element
+                const FD = new FormData( form );
+/*
+                // Define what happens on successful data submission
+                XHR.addEventListener( "load", function(event) {
+                alert( event.target.responseText );
+                } );
 
-</body>
+                // Define what happens in case of error
+                XHR.addEventListener( "error", function( event ) {
+                    alert( 'Oops! Something went wrong.' );
+                } );*/
+
+                fetch("http://www.googe.com",{
+                    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer'})
+                .then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    console.log(data);
+                }).catch(function() {
+                    console.log("Booo");
+                });
+                /*
+                // Set up our request
+                XHR.open("GET", FD.get("name") );
+                // The data sent is what the user provided in the form
+                XHR.send(null);*/
+            }
+
+            // Access the form element...
+            const form = document.getElementById( "myForm" );
+
+            // ...and take over its submit event.
+            form.addEventListener( "submit", function ( event ) {
+                event.preventDefault();
+
+                sendData();
+                } 
+            );
+        });
+        </script>
+    <body>
+
+    <h1>Static Website</h1>
+    <p>Test.</p>
+    <form id="myForm">
+        <label for="myName">Send me your name:</label>
+        <input id="myName" name="name" value="John">
+        <input type="submit" value="Send Me!">
+    </form>
+    </body>
 </html>
