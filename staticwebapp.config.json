@@ -20,10 +20,14 @@
       },
       {
         "route": "/login",
-        "rewrite": "/.auth/login/github"
+        "rewrite": "/.auth/login/aad"
       },
       {
-        "route": "/.auth/login/twitter",
+        "route": "/.auth/login/github", //Blocking Github
+        "statusCode": 404
+      },
+      {
+        "route": "/.auth/login/twitter", //Blocking Twitter
         "statusCode": 404
       },
       {
